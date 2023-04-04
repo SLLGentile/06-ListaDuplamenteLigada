@@ -147,20 +147,84 @@ void inserirElemento()
 }
 
 
-// funções a serem implementadas no exericio
-void exibirReverso()
+// funções a serem implementadas no exercicio
+
+void exibirReverso() //comeca no ult e navega a lista apontando para o interior
 {
+	if (ultimo == NULL)
+	{
+		cout << "Lista Vazia";
+	}
+	else
+	{
+		NO* aux = ultimo;
+		while (aux != NULL)
+		{
+			cout << aux->valor << endl;
+			aux = aux->ant;
+		}
+	}
+}
+
+
+
+void excluirPrimeiroElemento() //considera o prox como primeiro elemento sendo assim o anterior do primeiro fica nulo (free)
+{
+	NO* aux = primeiro;
+	NO* excluir = aux;
+
+	if (primeiro == NULL) {
+		cout << "Lista vazia \n";
+		return;
+	}
+
+	else if (primeiro->prox == NULL)
+	{
+		primeiro = NULL;
+		ultimo = NULL;
+		cout << "Primeiro numero excluido \n";
+		free(aux);
+	}
+
+	else 
+	{
+		primeiro = primeiro->prox;
+		primeiro->ant = NULL;
+		cout << "Primeiro numero excluido \n";
+		free(aux);
+	}
 
 }
 
-void excluirPrimeiroElemento()
+void excluirUltimoElemento() //considera o ant do primeiro como ultimo sendo assim o prox passa ser nulo (free)
 {
+	{
+		NO* aux = ultimo;
+		NO* excluir = aux;
 
-}
+		if (ultimo == NULL)
+		{
+			cout << "Lista Vazia\n";
+			return;
+		}
 
-void excluirUltimoElemento()
-{
+		else if (ultimo->ant == NULL)
+		{
+			ultimo = NULL;
+			primeiro = NULL;
+			cout << "Ultimo numero excluido\n";
+			free(aux);
+		}
 
+		else 
+		{
+			ultimo = ultimo->ant;
+			ultimo->prox = NULL;
+			cout << "O ultimo numero foi excluido da lista\n";
+			free(aux);
+		}
+		
+	}
 }
 
 
